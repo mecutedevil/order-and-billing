@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Digital Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Digital Menu - Management</h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.1em; margin-top: 10px;">Admin Panel</p>
+        <nav style="margin-top: 15px;">
+            <a href="customer.html" class="nav-link">Customer View</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Menu Display Section -->
+        <section id="menu-section" class="menu-section">
+            <h2>Menu</h2>
+            
+            <!-- Morning Menu -->
+            <div class="menu-category">
+                <h3>Morning</h3>
+                <div class="menu-grid" id="morning-menu"></div>
+            </div>
+
+            <!-- Lunch Menu -->
+            <div class="menu-category">
+                <h3>Lunch</h3>
+                <div class="menu-grid" id="lunch-menu"></div>
+            </div>
+
+            <!-- Dinner Menu -->
+            <div class="menu-category">
+                <h3>Dinner</h3>
+                <div class="menu-grid" id="dinner-menu"></div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart-section" class="cart-section">
+            <h2>Your Cart</h2>
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="billing">
+                <div class="billing-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">₹0.00</span>
+                </div>
+                <div class="billing-row">
+                    <span>Tax (5%):</span>
+                    <span id="tax">₹0.00</span>
+                </div>
+                <div class="billing-row total">
+                    <span>Total:</span>
+                    <span id="total">₹0.00</span>
+                </div>
+                <button id="checkout-btn" class="checkout-btn" disabled>Checkout</button>
+            </div>
+        </section>
+
+        <!-- Management Section -->
+        <section id="management-section" class="management-section">
+            <h2>Management</h2>
+            <form id="item-form" class="item-form">
+                <input type="hidden" id="edit-id" value="">
+                <div class="form-group">
+                    <label for="item-name">Item Name:</label>
+                    <input type="text" id="item-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="item-price">Price (₹):</label>
+                    <input type="number" id="item-price" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="item-category">Category:</label>
+                    <select id="item-category" required>
+                        <option value="morning">Morning</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="item-image">Image URL:</label>
+                    <input type="url" id="item-image" required>
+                </div>
+                <div class="form-group">
+                    <div id="image-preview" class="image-preview"></div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" id="submit-btn">Add Item</button>
+                    <button type="button" id="cancel-edit-btn" style="display: none;">Cancel Edit</button>
+                </div>
+            </form>
+            <div id="items-list" class="items-list">
+                <h3>Manage Items</h3>
+                <div id="items-container"></div>
+            </div>
+            
+            <!-- Payment Settings -->
+            <div class="payment-settings">
+                <h3>Payment Settings</h3>
+                <div class="form-group">
+                    <label>Payment Timing:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="payment-timing" value="before" id="pay-before">
+                            <span>Pay Before Order</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="payment-timing" value="after" id="pay-after">
+                            <span>Pay After Order</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="upi-id">UPI ID (for QR Payment):</label>
+                    <input type="text" id="upi-id" placeholder="yourname@paytm">
+                </div>
+                <div class="form-group">
+                    <label>Payment Verification:</label>
+                    <div class="verification-info">
+                        <p style="font-size: 0.9em; color: #666; margin-bottom: 10px;">
+                            When "Pay Before Order" is enabled, customers must enter their UPI Transaction ID from their payment receipt (Paytm/PhonePe/Google Pay) after completing payment. The transaction ID will be stored with the order for verification.
+                        </p>
+                    </div>
+                </div>
+                <button type="button" id="save-payment-settings" class="save-settings-btn">Save Settings</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

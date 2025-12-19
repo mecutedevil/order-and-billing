@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu - Order Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Restaurant Digital Menu</h1>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.1em; margin-top: 10px;">Order Your Favorite Food</p>
+    </header>
+
+    <main class="container customer-container">
+        <!-- Menu Display Section -->
+        <section id="menu-section" class="menu-section">
+            <h2>Menu</h2>
+            
+            <!-- Morning Menu -->
+            <div class="menu-category">
+                <h3>Morning</h3>
+                <div class="menu-grid" id="morning-menu"></div>
+            </div>
+
+            <!-- Lunch Menu -->
+            <div class="menu-category">
+                <h3>Lunch</h3>
+                <div class="menu-grid" id="lunch-menu"></div>
+            </div>
+
+            <!-- Dinner Menu -->
+            <div class="menu-category">
+                <h3>Dinner</h3>
+                <div class="menu-grid" id="dinner-menu"></div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart-section" class="cart-section">
+            <h2>Your Cart</h2>
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            
+            <div class="customer-info-section">
+                <div class="info-field">
+                    <label for="customer-name" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">Customer Name:</label>
+                    <input type="text" id="customer-name" placeholder="Enter your name" class="info-input" required>
+                </div>
+                <div class="info-field">
+                    <label for="table-number" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">Table Number:</label>
+                    <input type="number" id="table-number" min="1" placeholder="Enter table number" class="info-input" required>
+                </div>
+            </div>
+            <div class="billing">
+                <div class="billing-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">₹0.00</span>
+                </div>
+                <div class="billing-row">
+                    <span>Tax (5%):</span>
+                    <span id="tax">₹0.00</span>
+                </div>
+                <div class="billing-row total">
+                    <span>Total:</span>
+                    <span id="total">₹0.00</span>
+                </div>
+                
+                <!-- QR Payment Section -->
+                <div id="qr-payment-section" class="qr-payment-section" style="display: none;">
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Scan to Pay</h3>
+                    <div id="qr-code-container" class="qr-code-container">
+                        <div id="qr-code"></div>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px; font-size: 0.9em; color: #666;">
+                        Scan QR code with any UPI app
+                    </p>
+                    <p id="payment-status" style="text-align: center; margin-top: 10px; font-weight: bold; color: #ffc107;">Scan QR code and complete payment</p>
+                    
+                    <div id="transaction-input-section" style="margin-top: 15px; display: none;">
+                        <label for="payment-transaction-id" style="display: block; margin-bottom: 8px; font-weight: bold; color: #333;">UPI Transaction ID:</label>
+                        <input type="text" id="payment-transaction-id" placeholder="Enter UPI transaction ID from your payment receipt" class="transaction-input" maxlength="50">
+                        <p style="font-size: 0.85em; color: #666; margin-top: 5px;">
+                            After payment, check your UPI app (Paytm/PhonePe/Google Pay) for the transaction ID and enter it here.
+                        </p>
+                        <p id="transaction-error" style="color: #dc3545; font-size: 0.85em; margin-top: 5px; display: none;">Please enter your UPI transaction ID to proceed.</p>
+                    </div>
+                    <button id="confirm-payment-btn" class="confirm-payment-btn" style="display: none;">Verify Transaction & Confirm Order</button>
+                </div>
+                
+                <button id="checkout-btn" class="checkout-btn" disabled>Checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="customer.js"></script>
+</body>
+</html>
+
